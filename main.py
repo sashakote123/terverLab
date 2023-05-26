@@ -87,14 +87,14 @@ def getCharacteristics(list_g, sigma):
 
 def getCount(delta_list, list_g, N):
     countList = []
-    countList.append(0)
+    #countList.append(0)
     for j in range(1, N):
         count = 0
         for i in range(len(list_g)):
             if list_g[i] <= delta_list[j] and list_g[i] >= delta_list[j - 1]:
                 count += 1
         countList.append(count)
-    countList.append(0)
+    #countList.append(0)
 
     return countList
 
@@ -130,14 +130,12 @@ xlist = np.linspace(list_g[0], list_g[-1], N)
 def getqList(xlist, sigma, N):
     q_list = []
     f1 = lambda x: x / sigma ** 2 * math.exp(-x ** 2 / (2 * sigma ** 2))
-    q_list.append(si.quad(f1, -math.inf, xlist[0])[0])
     for i in range(N - 1):
         q_list.append(si.quad(f1, xlist[i], xlist[i + 1])[0])
-    q_list.append(si.quad(f1, xlist[-1], math.inf)[0])
-    print(xlist)
-    print(q_list, len(q_list))
+    print('#####################################################')
+    print('xlist:', xlist)
+    print('qlist: ', q_list, len(q_list))
     return q_list
-
 
 q_list = getqList(xlist, 1, N)
 countList = getCount(xlist, list_g, N)
@@ -146,8 +144,8 @@ print(countList)
 
 def Gipoteza(countList, q_list, density, N, alpha):
     sum = 0
-    critical = scipy.stats.chi2.ppf(1 - alpha, N - 1)
-    for j in range(1, N + 1):
+    critical = scipy.stats.chi2.ppf(1 - alpha, N - 2)
+    for j in range(1, N-1):
         sum += (countList[j] - density * q_list[j]) ** 2 / (density * q_list[j])
     return sum, critical
 

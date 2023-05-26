@@ -213,7 +213,7 @@ class Ui_MainWindow(object):
         self.label_18.setObjectName("label_18")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.label_18)
         self.label_19 = QtWidgets.QLabel(self.formLayoutWidget_4)
-        self.label_19.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_19.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_19.setObjectName("label_19")
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_19)
         self.label_20 = QtWidgets.QLabel(self.formLayoutWidget_4)
@@ -298,11 +298,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_3.setText(_translate("MainWindow", "Плотность"))
-        self.label_4.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Параметр σ</p></body></html>"))
+        self.label_4.setText(_translate("MainWindow",
+                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                        "p, li { white-space: pre-wrap; }\n"
+                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Параметр σ</p></body></html>"))
         self.lineEdit.setText(_translate("MainWindow", "100"))
         self.lineEdit_2.setText(_translate("MainWindow", "1"))
         item = self.tableWidget.horizontalHeaderItem(0)
@@ -333,7 +334,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "nj/|Δ`j|"))
         item = self.tableWidget_3.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
-        self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">0</span></p></body></html>"))
+        self.label_6.setText(_translate("MainWindow",
+                                        "<html><head/><body><p><span style=\" font-size:12pt;\">0</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Рассчитать"))
         self.checkBox.setText(_translate("MainWindow", "Строить гистограмму"))
         self.label_5.setText(_translate("MainWindow", "Min:"))
@@ -361,9 +363,12 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "Решение:"))
         self.label_15.setText(_translate("MainWindow", "-"))
         self.label_17.setText(_translate("MainWindow", "<html><head/><body><p>Критическое значение:</p></body></html>"))
-        self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">0</span></p></body></html>"))
-        self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">R</span><span style=\" font-size:10pt; vertical-align:sub;\">0</span><span style=\" font-size:10pt;\">=</span></p></body></html>"))
-        self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">0</span></p></body></html>"))
+        self.label_18.setText(_translate("MainWindow",
+                                         "<html><head/><body><p><span style=\" font-size:10pt;\">0</span></p></body></html>"))
+        self.label_19.setText(_translate("MainWindow",
+                                         "<html><head/><body><p><span style=\" font-size:10pt;\">R</span><span style=\" font-size:10pt; vertical-align:sub;\">0</span><span style=\" font-size:10pt;\">=</span></p></body></html>"))
+        self.label_20.setText(_translate("MainWindow",
+                                         "<html><head/><body><p><span style=\" font-size:10pt;\">0</span></p></body></html>"))
         self.label_23.setText(_translate("MainWindow", "Степени свободы"))
         self.label_24.setText(_translate("MainWindow", "0"))
         self.lineEdit_6.setText(_translate("MainWindow", "100"))
@@ -373,7 +378,8 @@ class Ui_MainWindow(object):
         self.label_29.setText(_translate("MainWindow", "0"))
         self.pushButton_6.setText(_translate("MainWindow", "Ок"))
         self.label_25.setText(_translate("MainWindow", "Число опытов:"))
-        self.label_31.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">0</span></p></body></html>"))
+        self.label_31.setText(_translate("MainWindow",
+                                         "<html><head/><body><p><span style=\" font-size:12pt;\">0</span></p></body></html>"))
 
         self.lineEdit_6.setText('100')
 
@@ -413,30 +419,40 @@ class Ui_MainWindow(object):
         sorted_sample = np.sort(sample)
         n = len(sorted_sample)
         cdf = np.arange(1, n + 1) / n
-        x = np.linspace(0, np.max(list_g), int(self.lineEdit.text()))
+        x = np.linspace(0, list_g[-1], int(self.lineEdit.text()))
         theoretical_cdf = rayleigh.cdf(x, scale=float(self.lineEdit_2.text()))
 
-
-        x = np.linspace(0, list_r[-1], 500)
+        x = np.linspace(0, list_g[-1], 500)
         y = []
-        d_list = []
-        for i in range(500):
-            y.append(math.sqrt(-2 * float(self.lineEdit_2.text()) ** 2 * math.log(1 - x[i], math.e)))
-
-
-        x2 = np.linspace(list_r[0], list_r[-1], int(self.lineEdit.text()))
         y2 = []
         d_list = []
-        for i in range(int(self.lineEdit.text())):
-            y2.append(math.sqrt(-2 * float(self.lineEdit_2.text()) ** 2 * math.log(1 - x2[i], math.e)))
+        for i in range(500):
+            # y.append(math.sqrt(-2 * float(self.lineEdit_2.text()) ** 2 * math.log(1 - x[i], math.e)))
+            y.append(1 - math.exp(-x[i] ** 2 / (2 * float(self.lineEdit_2.text()) ** 2)))
 
-        for i in range(int(self.lineEdit.text())):
-            d_list.append(abs(y2[i]-list_g[i]))
+        x2 = np.linspace(list_g[0], list_g[-1], int(self.lineEdit.text()))
+        count = getCount(x2, list_g, int(self.lineEdit.text()))
+        for i in range(len(count)):
+            count[i] /= int(self.lineEdit.text())
+            y2.append(1 - math.exp(-x2[i] ** 2 / (2 * float(self.lineEdit_2.text()) ** 2)))
 
-        #print('dlist:', d_list)
+        sum = 0
+        F_list = []
+        for i in range(len(count)):
+            sum += count[i]
+            F_list.append(sum)
+        print('Flist', F_list)
+        print('Y', y2)
+
+        for i in range(len(count)):
+            d_list.append(abs(y2[i]-F_list[i]))
+
+        print('count', count)
+        print()
+
+        # print('dlist:', d_list)
         print(np.max(d_list))
         self.label_31.setText(str(np.max(d_list)))
-
 
         if self.a == 1 and self.checkBox.isChecked():
             deltaList1 = np.linspace(list_g[0], list_g[-1], int(self.lineEdit_3.text()) + 2)
@@ -455,7 +471,7 @@ class Ui_MainWindow(object):
 
             plt.subplot(1, 2, 1)
             plt.title('Функция распределения')
-            plt.plot(y, x, '-g')
+            plt.plot(x, y, '-g')
             plt.plot([list_g[0], list_g[0]], [0, cdf[0]], 'r')
             for i in range(n - 1):
                 plt.plot([list_g[i], list_g[i + 1]], [cdf[i], cdf[i]], 'r')
@@ -487,7 +503,7 @@ class Ui_MainWindow(object):
 
             plt.subplot(1, 2, 1)
             plt.title('Функция распределения')
-            plt.plot(y, x, '-g')
+            plt.plot(x, y, '-g')
             plt.plot([list_g[0], list_g[0]], [0, cdf[0]], 'r')
             for i in range(n - 1):
                 plt.plot([list_g[i], list_g[i + 1]], [cdf[i], cdf[i]], 'r')
@@ -507,11 +523,9 @@ class Ui_MainWindow(object):
             plt.show()
         else:
 
-
-
             plt.subplot(1, 2, 1)
             plt.title('Функция распределения')
-            plt.plot(y, x, '-g')
+            plt.plot(x, y, '-g')
             plt.plot([list_g[0], list_g[0]], [0, cdf[0]], 'r')
             for i in range(n - 1):
                 plt.plot([list_g[i], list_g[i + 1]], [cdf[i], cdf[i]], 'r')
@@ -546,17 +560,18 @@ class Ui_MainWindow(object):
         delta2List2.append(math.inf)
 
         deltaList12 = np.linspace(list_g[0], list_g[-1], int(self.lineEdit_3.text()))
-        qlist = getqList(self.deltaList2, float(self.lineEdit_2.text()), len(self.deltaList2))
 
-        countList = getCount(self.deltaList2, list_g, len(self.deltaList2))
+        deltaList1 = np.linspace(list_g[0], list_g[-1], int(self.lineEdit_3.text()))
+        countList = getCount(deltaList1, list_g, len(deltaList1))
+        qlist1 = getqList(deltaList1, float(self.lineEdit_2.text()), len(deltaList1))
 
-        self.tableWidget_5.setColumnCount(len(qlist))
-        for i in range(len(qlist)):
-            self.tableWidget_5.setItem(1, i, QTableWidgetItem(str(qlist[i])))
-        for i in range(len(self.deltaList2)):
-            self.tableWidget_5.setItem(0, i, QTableWidgetItem(str(self.deltaList2[i])))
+        self.tableWidget_5.setColumnCount(len(qlist1))
+        for i in range(len(qlist1)):
+            self.tableWidget_5.setItem(1, i, QTableWidgetItem(str(qlist1[i])))
+        # for i in range(len(deltaList1)):
+        #    self.tableWidget_5.setItem(0, i, QTableWidgetItem(str(deltaList1[i])))
 
-        sum2, critical2 = Gipoteza(countList, qlist, int(self.lineEdit.text()), len(self.deltaList2), float(
+        sum2, critical2 = Gipoteza(countList, qlist1, int(self.lineEdit.text()), len(deltaList1), float(
             self.lineEdit_5.text()))
 
         print(sum2, critical2)
@@ -572,10 +587,12 @@ class Ui_MainWindow(object):
         count1 = 0
         count2 = 0
         for i in range(int(self.lineEdit_6.text())):
+
             list_g = getData(int(self.lineEdit.text()), float(self.lineEdit_2.text()))[1]
-            q_list = getqList(self.deltaList2, float(self.lineEdit_2.text()), len(self.deltaList2))
-            countList = getCount(self.deltaList2, list_g, len(self.deltaList2))
-            sum, critical = Gipoteza(countList, q_list, int(self.lineEdit.text()), len(self.deltaList2),
+            deltaList1 = np.linspace(list_g[0], list_g[-1], int(self.lineEdit_3.text()) + 2)
+            q_list = getqList(deltaList1, float(self.lineEdit_2.text()), len(deltaList1))
+            countList = getCount(deltaList1, list_g, len(deltaList1))
+            sum, critical = Gipoteza(countList, q_list, int(self.lineEdit.text()), len(deltaList1),
                                      float(self.lineEdit_5.text()))
             if sum > critical:
                 count1 += 1
@@ -593,6 +610,7 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
